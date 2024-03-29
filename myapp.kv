@@ -1,0 +1,265 @@
+WindowManager:
+    FirstWindow:
+    SecondWindow:
+    ThirdWindow:
+    FourthWindow:
+    FifthWindow:
+    SixthWindow:
+
+<FirstWindow>:
+    name:"first"
+    BoxLayout:
+        orientation:"vertical"
+        size:root.width, root.height
+        spacing: 150
+       
+
+        Label:
+            text: "Welcome to elearning"
+            id: label
+            font_size: 90
+            size_hint: 0.5,0.5
+            pos_hint: {'center_x': 0.5, 'top': 0.8}
+
+        Button:
+            text: "Proceed"
+            font_size: 80
+            size_hint: 0.8 , 0.25
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            on_press: app.button1_pressed(self)
+            on_release: 
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Exit"
+            font_size: 80
+            size_hint: 0.8 , 0.25
+            pos_hint: {'center_x': 0.5, 'center_y': 0}
+            on_press: app.button2_pressed(self)
+
+<SecondWindow>:
+    name:"second"
+    BoxLayout:
+        orientation:"vertical"
+        size:root.width, root.height
+        spacing: 100
+            
+        Label:
+            id: label
+            text: "Second screen"
+            font_size: 110
+            size_hint: 1, 0.8
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        Button:
+            text: "sign in"
+            font_size: 50
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.5, 'center_y':0.5}
+            on_release: 
+                app.root.current = "third"
+                root.manager.transition.direction = "left"
+
+        
+        Button:
+            text: "Sign up"
+            font_size: 50
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.5, 'center_y':0.5}
+            on_release: 
+                app.root.current = "fourth"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Go Back"
+            font_size: 50
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.1, 'center_y': 0.5}
+            on_press: app.button1_pressed(self)
+            on_release: 
+                app.root.current = "first"
+                root.manager.transition.direction = "right"
+
+<ThirdWindow>:
+    name:"third"
+    BoxLayout:
+        orientation:"vertical"
+        size:root.width, root.height
+        spacing: 80
+            
+        Label:
+            id: label
+            text: "Sign In"
+            font_size: 110
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.5, 'top': 0.9}
+        
+        TextInput:
+            id: username_input_u
+            hint_text: "Username"
+            font_size: 30
+            size_hint: 0.5, 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+
+        TextInput:
+            id: password_input_u
+            hint_text: "Password"
+            font_size: 30
+            size_hint: 0.5, 0.1
+            password: True
+            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+
+        Button:
+            text: "Submit"
+            font_size: 50
+            size_hint: 0.3, 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+            on_press: app.submit_button_pressed(username_input_u,password_input_u)
+        
+        
+        Button:
+            text: "Go Back"
+            font_size: 50
+            size_hint: 0.2 , 0.1
+            pos_hint: {'center_x': 0.1, 'center_y': 0.5}
+            on_release: 
+                app.root.current = "second"
+                root.manager.transition.direction = "right"
+
+
+
+<FourthWindow>:
+    name:"fourth"
+    BoxLayout:
+        orientation:"vertical"
+        size:root.width, root.height
+        spacing: 40
+            
+        Label:
+            id: label
+            text: "SignUp"
+            font_size: 80
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        
+        TextInput:
+            id: username_input
+            hint_text: "Username"
+            font_size: 30
+            size_hint: 0.3, 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+
+        TextInput:
+            id: email_input
+            hint_text: "Email"
+            font_size: 30
+            size_hint: 0.3, 0.1
+            input_type: 'text'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+
+        TextInput:
+            id: password_input
+            hint_text: "Password"
+            font_size: 30
+            size_hint: 0.3, 0.1
+            password: True
+            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+        
+        TextInput:
+            id: confirm_password_input
+            hint_text: "Confirm Password"
+            font_size: 30
+            size_hint: 0.3, 0.1
+            password: True
+            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+
+        
+        Button:
+            text: "Submit"
+            font_size: 50
+            size_hint: 0.2, 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+            on_press: app.signup_pressed(username_input.text, email_input.text, password_input.text, confirm_password_input.text)
+            on_release:
+                root.manager.transition.direction = "left"
+
+
+        Button:
+            text: "Go Back"
+            font_size: 50
+            size_hint: 0.2 , 0.1
+            pos_hint: {'center_x': 0.1, 'center_y': 0.5}
+            on_release: 
+                app.root.current = "second"
+                root.manager.transition.direction = "right"
+
+<FifthWindow>:
+    name:"fifth"
+    BoxLayout:
+        orientation: 'vertical'
+        size:root.width, root.height
+        spacing: 40
+        
+        Label:
+            id: label
+            text: 'Quiz Questions:'
+            font_size: 130
+            height: self.texture_size[1]
+            halign: 'center'
+            valign: 'middle'
+            pos_hint: {'center_x': 0.5}
+
+        Button:
+            text: 'Fetch Questions'
+            font_size: 50
+            size_hint: 0.4, 0.5
+            pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+            on_press: app.fetch_quiz_questions(self)
+            on_release:
+                root.manager.transition.direction = "down"
+
+        Button:
+            text: "Go Back"
+            font_size: 50
+            size_hint: 0.2 , 0.2
+            pos_hint: {'center_x': 0.1, 'center_y': 0.5}
+            on_release: 
+                app.root.current = "third"
+                root.manager.transition.direction = "right"
+
+  
+<SixthWindow>:
+    name:"sixth"
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 60
+        
+        Label:
+            id: label
+            text: 'Self Learning Questions:'
+            font_size: 80
+            size_hint: 0.2, 0.2
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        
+        ScrollView:
+            GridLayout:
+                id: layout
+                cols: 1
+                font_size:20
+                spacing: 10
+                size_hint_y: None
+                height: self.minimum_height
+
+        Button:
+            text: "Go Back"
+            font_size: 50
+            size_hint: 0.2 , 0.1
+            pos_hint: {'center_x': 0.1, 'center_y': 0.5}
+            on_release: 
+                app.root.current = "fifth"
+                root.manager.transition.direction = "right"
+            
+
+            
+
